@@ -233,7 +233,7 @@ const handleClick = (calEvent: any | "") => {
      </Grid>
      <Grid item xs={6} md={6}>
         <Button
-          onClick={()=>handleClick(event? event[5]:"")}
+          onClick={()=>handleClick(event? event[7]:"")}
         >
           Add to Google Calendar
      </Button>
