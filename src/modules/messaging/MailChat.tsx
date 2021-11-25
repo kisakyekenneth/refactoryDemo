@@ -6,6 +6,7 @@ import { IContactsFilter } from '../contacts/types';
 import { useSelector } from 'react-redux';
 import { ICrmState } from '../../data/contacts/reducer';
 import SendEmail from './SendEmail';
+import Chatlib from '../chatapp/Chatlib';
 
 const MailChat = () => {
   const { data, loading }: ICrmState = useSelector((state: any) => state.crm);
@@ -27,7 +28,8 @@ const MailChat = () => {
           </>
         }
       />
-      <p> MORE COMING SOON </p>
+      <Chatlib/>
+      {/* <p> MORE COMING SOON </p> */}
     </Layout>
   );
 };
