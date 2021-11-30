@@ -91,10 +91,10 @@ const EventForm = ({
   function handleSubmit(values: any, actions: FormikHelpers<any>) {
     const toSave: any = {
       id: values.id,
-      name: `${values.category.name}`,
+      name: values.name,
       summary: values.summary,
       privacy: GroupPrivacy.Public,
-      categoryId: cleanComboValue(values.category),
+      categoryId: values.category,
       parentId: values.group.parentId,
 
       startDate: values.startDate,
