@@ -68,7 +68,9 @@ const MembersCalendar = () => {
 				}
 				myEvents.push(calEvent)
 			}
+      myEvents.concat(schedules);
 			setSchedules(myEvents)
+
 		})
 
     get(remoteRoutes.dayOff, (data) => {
@@ -85,6 +87,7 @@ const MembersCalendar = () => {
         };
         myDayOff.push(disableDay);
       }
+      myDayOff.concat(schedules);
       setSchedules(myDayOff);
     });
 
@@ -180,30 +183,6 @@ for (let i = 0; i < events.length; i++) {
 		}
 	}, [updateCount, cal])
 
-  
-  useEffect(() => {
-        get (`${remoteRoutes.events}`,
-        (data) => { let events: ISchedule[] = []          
-          for (let i = 0; i < data.length; i++) {
-            const mce = {
-              //calendarId: data[i].id,
-              category: "time",
-              isVisible: true,
-              id: data[i].id,
-              title: data[i].name,
-              body: data[i].summary,
-              location: data[i].venue.name,
-              start:data[i].startDate,
-              end:data[i].endDate,
-            };
-  
-            events.push(mce);
-          }
-          setEvent(events);
-          },)
-},
-[]);
-
 
 useEffect(()=>{
   // initClient((success: any)=>{
@@ -269,7 +248,7 @@ const handleClick = (calEvent: any | "") => {
      </Grid>
      <Grid item xs={6} md={6}>
         <Button
-          onClick={()=>handleClick(event? event[5]:"")}
+          onClick={()=>handleClick(event? event[7]:"")}
         >
           Add to Google Calendar
      </Button>
@@ -345,8 +324,8 @@ const handleClick = (calEvent: any | "") => {
               view='month'
               useCreationPopup={false}
               useDetailPopup={true}
-              //schedules={schedules}
-              schedules={day}
+              schedules={schedules}
+              //schedules={day}
               onBeforeCreateSchedule={onBeforeCreateSchedule}
               onBeforeDeleteSchedule={onBeforeDeleteSchedule}
               onBeforeUpdateSchedule={onBeforeUpdateSchedule}
