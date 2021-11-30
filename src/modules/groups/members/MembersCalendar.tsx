@@ -71,7 +71,6 @@ const MembersCalendar = () => {
       myEvents.concat(schedules);
 			setSchedules(myEvents)
 
-
 		})
 
     get(remoteRoutes.dayOff, (data) => {
